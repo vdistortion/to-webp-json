@@ -1,50 +1,32 @@
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
-const dirSrc = 'src';
-const dirDist = 'dist';
-const fullPathSrc = path.resolve(`./${dirSrc}/`);
-const fullPathDist = path.resolve(`./${dirDist}/`);
+import { toJson } from './modules/to-json.js';
+import { getPath } from './modules/get-path.js';
+import { scanner } from './modules/scanner.js';
+import { recreateDist } from './modules/recreate-dist.js';
 
-function scaner(initPath) {
-  const list = fs.readdirSync(initPath);
+const options = {
+  src: 'src',
+  dist: 'dist',
+  max: {
+    width: 1500,
+    height: 1500,
+  },
+  nameJson: 'structure',
+  noJson: false,
+};
 
-  for (let item of list) {
-    const newPath = initPath + item;
-    const stat = fs.statSync(newPath);
+process.argv.slice(2).forEach((arg) => {
+  const [param, value] = arg.split('=');
+  if (param === 'no-json') options.noJson = true;
+  if (param === 'name-json') options.nameJson = value;
+  if (param === 'src') options.src = value;
+  if (param === 'dist') options.dist = value;
+  if (param === 'max-width') options.max.width = Number(value);
+  if (param === 'max-height') options.max.height = Number(value);
+});
 
-    if (stat.isDirectory()) {
-      scaner(newPath + path.sep);
-    } else {
-      const image = {
-        name: item.split('.')[0],
-        path: newPath,
-        dist: newPath.replace(dirSrc, dirDist).split(path.sep).slice(0, -1).join(path.sep),
-      };
-      const fullPath = [path.resolve(image.dist), `${image.name[0] === '_' ? `io${image.name}` : image.name}.webp`].join(path.sep);
-      console.log(image, fullPath);
-
-      if (!fs.existsSync(image.dist)) {
-          fs.mkdirSync(image.dist, {
-            recursive: true,
-          });
-      }
-      const input = sharp(newPath);
-
-      input
-        .metadata()
-        .then((metadata) => {
-          const width = metadata.width > 1500 ? 1500 : metadata.width;
-          const height = metadata.height > 1500 ? 1500 : metadata.height;
-
-          input.resize(width, height, {
-            fit: 'inside',
-          })
-          .toFile(fullPath);
-        });
-    }
-  }
-}
-
-fs.rmSync(fullPathDist, { recursive: true, force: true });
-scaner(`./${dirSrc}/`);
+recreateDist(options.dist).then(() => {
+  scanner(options.src, options.src, options.dist, options.max);
+  return options.noJson
+    ? Promise.resolve()
+    : toJson(getPath(options.dist, `${options.nameJson}.json`), options.src);
+});

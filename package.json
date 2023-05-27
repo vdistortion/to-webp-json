@@ -1,15 +1,18 @@
 {
-  "name": "test",
+  "name": "to-webp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Convert images to webp",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "webp": "node index.js"
+    "to-webp": "node index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL",
   "dependencies": {
-    "sharp": "^0.31.3"
+    "directory-structure-json": "^1.0.0",
+    "is-image": "^3.1.0",
+    "sharp": "^0.32.1"
   }
 }
