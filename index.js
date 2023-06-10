@@ -1,7 +1,7 @@
-import { toJson } from './modules/to-json.js';
-import { getPath } from './modules/get-path.js';
-import { scanner } from './modules/scanner.js';
-import { recreateDist } from './modules/recreate-dist.js';
+import { toJson } from './modules/to-json';
+import { getPath } from './modules/get-path';
+import { scanner } from './modules/scanner';
+import { recreateDist } from './modules/recreate-dist';
 
 const options = {
   src: 'src',

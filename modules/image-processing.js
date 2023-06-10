@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'path';
 import sharp from 'sharp';
-import { getPath } from './get-path.js';
+import { getPath } from './get-path';
 
 function getName(fullName) {
   const [imageName] = fullName.split('.');
