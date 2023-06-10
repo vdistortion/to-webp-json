@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "to-webp": "node index.js"
+    "to-webp": "node index.js",
+    "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,10 @@
     "directory-structure-json": "^1.0.0",
     "is-image": "^3.1.0",
     "sharp": "^0.32.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   }
 }
