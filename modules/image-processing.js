@@ -4,8 +4,7 @@ import sharp from 'sharp';
 import { getPath } from './get-path';
 
 function getName(fullName) {
-  const [imageName] = fullName.split('.');
-  const name = imageName[0] === '_' ? `U${imageName}` : imageName;
+  const [name] = fullName.split('.');
   return `${name}.webp`;
 }
 
