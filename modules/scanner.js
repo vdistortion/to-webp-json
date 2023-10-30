@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'node:fs/promises';
 import isImage from 'is-image';
-import { getPath } from './get-path';
-import { imageProcessing } from './image-processing';
+import { getPath } from './get-path.js';
+import { imageProcessing } from './image-processing.js';
 
 export const scanner = (initPath, dirSrc, dirDist, maxSize) => {
   fs.readdir(initPath).then((files) => {

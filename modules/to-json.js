@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import isImage from 'is-image';
 import DirectoryStructureJSON from 'directory-structure-json';
-import { getPath } from './get-path';
+import { getPath } from './get-path.js';
 
 export const toJson = (jsonName, basePath = 'dist') => new Promise((resolve, reject) => {
   DirectoryStructureJSON.getStructure(fs, basePath, (error, structure) => {

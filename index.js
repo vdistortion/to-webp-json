@@ -1,7 +1,7 @@
-import { toJson } from './modules/to-json';
-import { getPath } from './modules/get-path';
-import { scanner } from './modules/scanner';
-import { recreateDist } from './modules/recreate-dist';
+import { toJson } from './modules/to-json.js';
+import { getPath } from './modules/get-path.js';
+import { scanner } from './modules/scanner.js';
+import { recreateDist } from './modules/recreate-dist.js';
 
 const options = {
   src: 'src',
@@ -24,9 +24,13 @@ process.argv.slice(2).forEach((arg) => {
   if (param === 'max-height') options.max.height = Number(value);
 });
 
-recreateDist(options.dist).then(() => {
-  scanner(options.src, options.src, options.dist, options.max);
-  return options.noJson
-    ? Promise.resolve()
-    : toJson(getPath(options.dist, `${options.nameJson}.json`), options.src);
-});
+if (options.noJson) {
+  recreateDist(options.dist).then(() => {
+    scanner(options.src, options.src, options.dist, options.max);
+  });
+} else {
+  const nameJson = getPath(options.dist, `${options.nameJson}.json`);
+  toJson(nameJson, options.dist).then(() => {
+    console.info(`File ./${nameJson} generated!`);
+  });
+}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "to-webp": "node index.js",
+    "to-webp": "node index.js no-json && node index.js",
     "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "keywords": [],
