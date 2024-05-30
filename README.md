@@ -1,24 +1,25 @@
-# to-webp
+# to-webp-json
 ### Usage
-Create ```src``` folder
+Create ```img-src``` folder
 ```shell
-mkdir src
+mkdir img-src
 ```
-Add images to ```src```
+Add images to ```img-src```
 ```shell
 npm run to-webp
 ```
 ### Command line options
-| Param      | Type    | Description                                    | Default   |
-|------------|---------|------------------------------------------------|-----------|
-| no-json    | boolean | Whether to generate a structure in a json file | false     |
-| name-json  | string  | Structure file name                            | structure |
-| src        | string  | Source folder name                             | src       |
-| dist       | string  | Result folder name                             | dist      |
-| max-width  | number  | Maximum image width in pixels                  | 1500      |
-| max-height | number  | Maximum image height in pixels                 | 1500      |
+| Param  | Type           | Description                    | Default  |
+|--------|----------------|--------------------------------|----------|
+| src    | string         | Source folder name             | img-src  |
+| dist   | string         | Result folder name             | img-dist |
+| json   | string \| null | Structure file name            | null     |
+| width  | number \| null | Maximum image width in pixels  | null     |
+| height | number \| null | Maximum image height in pixels | null     |
 ### Examples
 ```shell
-npm run to-webp no-json src=sources
-npm run to-webp name-json=static-images max-height=2000
+npm run to-webp json=static-images
+```
+```shell
+npm run to-webp src=sources height=2000
 ```

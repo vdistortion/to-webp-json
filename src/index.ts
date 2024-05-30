@@ -1,11 +1,11 @@
 import { existsSync } from 'node:fs';
-import { toJson } from './modules/to-json.js';
-import { getPath } from './modules/get-path.js';
-import { scanner } from './modules/scanner.js';
-import { recreateDist } from './modules/recreate-dist.js';
-import { TypeOptions } from '../index.js';
+import { toJson } from '@/modules/to-json.js';
+import { getPath } from '@/modules/get-path.js';
+import { scanner } from '@/modules/scanner.js';
+import { recreateDist } from '@/modules/recreate-dist.js';
+import { OptionsType } from '../index.js';
 
-const options: Readonly<TypeOptions> = {
+const options: Readonly<OptionsType> = {
   src: 'img-src',
   dist: 'img-dist',
   width: null,
@@ -16,8 +16,8 @@ const options: Readonly<TypeOptions> = {
 const errors: string[] = [];
 const args: string[] = process.argv.slice(2);
 
-const params: Partial<TypeOptions> = args.reduce(
-  (acc: Partial<TypeOptions>, arg: string) => {
+const params: Partial<OptionsType> = args.reduce(
+  (acc: Partial<OptionsType>, arg: string) => {
     const [param, value]: any[] = arg.split('=');
     const isValidValue = typeof value === 'string' && Boolean(value.length);
     const isValidParam = Object.keys(options).includes(param);
@@ -35,7 +35,7 @@ const params: Partial<TypeOptions> = args.reduce(
   {},
 );
 
-const settings: Readonly<TypeOptions> = {
+const settings: Readonly<OptionsType> = {
   ...options,
   ...params,
 };
@@ -47,11 +47,7 @@ if (errors.length > 0) {
   console.warn(errors.join('\n'));
 } else if (!settings.json) {
   recreateDist(settings.dist).then(() => {
-    const max = {
-      width: settings.width,
-      height: settings.height,
-    }
-    scanner(settings.src, settings.src, settings.dist, max);
+    scanner(settings.src, settings.src, settings.dist, settings.width, settings.height);
   });
 } else {
   const nameJson = getPath(settings.dist, `${settings.json}.json`);
