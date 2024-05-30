@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { existsSync } from 'node:fs';
 import { toJson } from '@/modules/to-json.js';
 import { getPath } from '@/modules/get-path.js';

@@ -21,10 +21,8 @@ export const imageProcessing = (
     const input: Sharp = sharp(image.path);
 
     input.metadata().then((metadata: Metadata) => {
-      const width =
-        Number(metadata.width) > Number(maxWidth) ? Number(maxWidth) : Number(metadata.width);
-      const height =
-        Number(metadata.height) > Number(maxHeight) ? Number(maxHeight) : Number(metadata.height);
+      const width = Number(metadata.width) > Number(maxWidth) ? maxWidth : null;
+      const height = Number(metadata.height) > Number(maxHeight) ? maxHeight : null;
       return input.resize(width, height, { fit: 'inside' }).toFile(fullPath);
     });
   });

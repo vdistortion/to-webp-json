@@ -1,13 +1,19 @@
 {
   "name": "to-webp-json",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Convert images to webp structure",
   "main": "./dist/index.js",
   "type": "module",
+  "bin": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:astrotrain55/to-webp-json.git"
+  },
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "node ./dist/index.js",
     "build": "rimraf ./dist && tsc && tsc-alias",
+    "public:lib": "npm run build && npm publish",
     "format:all": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|jsx|tsx)\"",
     "format:check": "prettier --ignore-path .gitignore --check \"**/*.+(js|ts|jsx|tsx)\""
   },
