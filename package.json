@@ -1,24 +1,41 @@
 {
-  "name": "to-webp",
-  "version": "1.0.0",
-  "description": "Convert images to webp",
-  "main": "index.js",
+  "name": "to-webp-json",
+  "version": "0.0.1",
+  "description": "Convert images to webp structure",
+  "main": "./dist/index.js",
   "type": "module",
   "scripts": {
-    "to-webp": "node index.js no-json && node index.js",
-    "lint": "eslint . --fix --ignore-path .gitignore"
+    "dev": "tsx watch src/index.ts",
+    "start": "node ./dist/index.js",
+    "build": "rimraf ./dist && tsc && tsc-alias",
+    "format:all": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|jsx|tsx)\"",
+    "format:check": "prettier --ignore-path .gitignore --check \"**/*.+(js|ts|jsx|tsx)\""
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "library",
+    "webp",
+    "json",
+    "static"
+  ],
   "author": "",
   "license": "GPL",
   "dependencies": {
     "directory-structure-json": "^1.0.0",
-    "is-image": "^3.1.0",
-    "sharp": "^0.32.1"
+    "is-image": "^4.0.0",
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
-    "eslint": "^8.42.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5"
-  }
+    "@types/node": "^20.12.13",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.7",
+    "tsc-alias": "^1.8.10",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5"
+  },
+  "types": "./index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ]
 }
