@@ -16,32 +16,28 @@ const options: Readonly<OptionsType> = {
 const errors: string[] = [];
 const args: string[] = process.argv.slice(2);
 
-const params: Partial<OptionsType> = args.reduce(
-  (acc: Partial<OptionsType>, arg: string) => {
-    const [param, value]: any[] = arg.split('=');
-    const isValidValue = typeof value === 'string' && Boolean(value.length);
-    const isValidParam = Object.keys(options).includes(param);
+const params: Partial<OptionsType> = args.reduce((acc: Partial<OptionsType>, arg: string) => {
+  const [param, value]: any[] = arg.split('=');
+  const isValidValue = typeof value === 'string' && Boolean(value.length);
+  const isValidParam = Object.keys(options).includes(param);
 
-    if (isValidValue && isValidParam) {
-      if (['width', 'height'].includes(param)) {
-        if (Number(value) >= 100) acc[param] = Number(value);
-      } else {
-        acc[param] = value;
-      }
+  if (isValidValue && isValidParam) {
+    if (['width', 'height'].includes(param)) {
+      if (Number(value) >= 100) acc[param] = Number(value);
+    } else {
+      acc[param] = value;
     }
+  }
 
-    return acc;
-  },
-  {},
-);
+  return acc;
+}, {});
 
 const settings: Readonly<OptionsType> = {
   ...options,
   ...params,
 };
 
-if (!existsSync(settings.src))
-  errors.push(`${settings.src} directory not found!`);
+if (!existsSync(settings.src)) errors.push(`${settings.src} directory not found!`);
 
 if (errors.length > 0) {
   console.warn(errors.join('\n'));

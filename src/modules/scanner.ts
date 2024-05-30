@@ -5,7 +5,13 @@ import { getPath } from '@/modules/get-path.js';
 import { imageProcessing } from '@/modules/image-processing.js';
 import { ImageType, MaxSizeType } from '../../index.js';
 
-export const scanner = (initPath: string, dirSrc: string, dirDist: string, maxWidth: MaxSizeType, maxHeight: MaxSizeType) => {
+export const scanner = (
+  initPath: string,
+  dirSrc: string,
+  dirDist: string,
+  maxWidth: MaxSizeType,
+  maxHeight: MaxSizeType,
+) => {
   readdir(initPath).then((files) => {
     files.forEach((file) => {
       const newPath = getPath(initPath, file);

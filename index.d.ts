@@ -12,17 +12,17 @@ export declare type ImageType = {
   name: string;
   path: string;
   dist: string;
-}
+};
 
 export declare type StructureJsonFileType = {
   type: 'file';
   name: string;
-}
+};
 
 export declare type StructureJsonDirectoryType = {
   type: 'folder';
   name: string;
   children: StructureJsonType;
-}
+};
 
 export declare type StructureJsonType = (StructureJsonDirectoryType | StructureJsonFileType)[];
