@@ -14,7 +14,6 @@ const options: Readonly<OptionsType> = {
   json: null,
 };
 
-const errors: string[] = [];
 const args: string[] = process.argv.slice(2);
 
 const params: Partial<OptionsType> = args.reduce((acc: Partial<OptionsType>, arg: string) => {
@@ -38,17 +37,14 @@ const settings: Readonly<OptionsType> = {
   ...params,
 };
 
-if (!existsSync(settings.src)) errors.push(`${settings.src} directory not found!`);
-
-if (errors.length > 0) {
-  console.warn(errors.join('\n'));
-} else if (!settings.json) {
-  recreateDist(settings.dist).then(() => {
-    scanner(settings.src, settings.src, settings.dist, settings.width, settings.height);
-  });
+if (!existsSync(settings.src)) {
+  console.warn(`${settings.src} directory not found!`);
 } else {
-  const nameJson = getPath(settings.dist, `${settings.json}.json`);
-  toJson(nameJson, settings.dist).then(() => {
-    console.info(`File ./${nameJson} generated!`);
-  });
+  await recreateDist(settings.dist);
+  await scanner(settings.src, settings.src, settings.dist, settings.width, settings.height);
+
+  if (settings.json) {
+    const nameJson = getPath(settings.dist, `${settings.json}.json`);
+    toJson(nameJson, settings.dist).then(() => console.info(`File ./${nameJson} generated!`));
+  }
 }

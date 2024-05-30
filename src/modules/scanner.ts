@@ -12,23 +12,23 @@ export const scanner = (
   maxWidth: MaxSizeType,
   maxHeight: MaxSizeType,
 ) => {
-  readdir(initPath).then((files) => {
-    files.forEach((file) => {
+  return readdir(initPath).then((files) => {
+    const promises = files.map((file) => {
       const newPath = getPath(initPath, file);
 
-      stat(newPath).then((stats) => {
-        if (stats.isDirectory()) scanner(newPath, dirSrc, dirDist, maxWidth, maxHeight);
-
-        if (isImage(file)) {
+      return stat(newPath).then((stats) => {
+        if (stats.isDirectory()) return scanner(newPath, dirSrc, dirDist, maxWidth, maxHeight);
+        else if (isImage(file)) {
           const distPath = newPath.replace(dirSrc, dirDist).split(sep).slice(0, -1);
           const image: ImageType = {
             name: file,
             path: newPath,
             dist: getPath(...distPath),
           };
-          imageProcessing(image, maxWidth, maxHeight);
-        }
+          return imageProcessing(image, maxWidth, maxHeight);
+        } else return Promise.resolve();
       });
     });
+    return Promise.all(promises);
   });
 };

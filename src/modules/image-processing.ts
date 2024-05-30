@@ -16,11 +16,11 @@ export const imageProcessing = (
 ) => {
   const fullPath = getPath(resolve(image.dist), getName(image.name));
 
-  fs.mkdir(image.dist, { recursive: true }).then(() => {
+  return fs.mkdir(image.dist, { recursive: true }).then(() => {
     sharp.cache(false);
     const input: Sharp = sharp(image.path);
 
-    input.metadata().then((metadata: Metadata) => {
+    return input.metadata().then((metadata: Metadata) => {
       const width = Number(metadata.width) > Number(maxWidth) ? maxWidth : null;
       const height = Number(metadata.height) > Number(maxHeight) ? maxHeight : null;
       return input.resize(width, height, { fit: 'inside' }).toFile(fullPath);
