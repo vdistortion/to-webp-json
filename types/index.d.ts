@@ -5,6 +5,7 @@ export declare type OptionsType = {
   dist: string;
   width: MaxSizeType;
   height: MaxSizeType;
+  format: string;
   json: string | null;
 };
 

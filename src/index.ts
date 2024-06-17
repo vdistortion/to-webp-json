@@ -27,6 +27,30 @@ const prompt = () =>
       default: 'img-dist',
     },
     {
+      type: 'list',
+      name: 'format',
+      message: 'Image format',
+      choices: [
+        {
+          name: 'original',
+          value: 'original',
+        },
+        {
+          name: 'webp',
+          value: 'webp',
+        },
+        {
+          name: 'jpg',
+          value: 'jpg',
+        },
+        {
+          name: 'png',
+          value: 'png',
+        },
+      ],
+      default: 'webp',
+    },
+    {
       type: 'number',
       name: 'width',
       message: 'Maximum width',
@@ -42,7 +66,7 @@ const prompt = () =>
       type: 'confirm',
       name: 'isJson',
       message: 'Should I generate a JSON file?',
-      default: true,
+      default: false,
     },
     {
       type: 'input',
@@ -58,6 +82,7 @@ const prompt = () =>
 const options: Readonly<OptionsType> = {
   src: 'img-src',
   dist: 'img-dist',
+  format: 'webp',
   width: null,
   height: null,
   json: null,
@@ -76,6 +101,8 @@ if (args.length) {
     if (isValidValue && isValidParam) {
       if (['width', 'height'].includes(param)) {
         if (Number(value) >= 100) params[param] = Number(value);
+      } else if (param === 'format') {
+        if (['webp', 'jpg', 'png', 'original'].includes(value)) params[param] = value;
       } else {
         params[param] = value;
       }
@@ -87,6 +114,7 @@ if (args.length) {
   prompt().then((answers) => {
     params.src = answers.src;
     params.dist = answers.dist;
+    params.format = answers.format;
     if (answers.isJson) params.json = answers.json;
     if (answers.width > 0) params.width = answers.width;
     if (answers.height > 0) params.height = answers.height;
@@ -105,7 +133,14 @@ async function start() {
     console.warn(`${settings.src} directory not found!`);
   } else {
     await recreateDist(settings.dist);
-    await scanner(settings.src, settings.src, settings.dist, settings.width, settings.height);
+    await scanner(
+      settings.src,
+      settings.src,
+      settings.dist,
+      settings.width,
+      settings.height,
+      settings.format,
+    );
 
     if (settings.json) {
       const nameJson = getPath(settings.dist, `${settings.json}.json`);
