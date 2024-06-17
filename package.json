@@ -28,10 +28,12 @@
   "license": "GPL",
   "dependencies": {
     "directory-structure-json": "^1.0.0",
+    "inquirer": "^9.2.23",
     "is-image": "^4.0.0",
     "sharp": "^0.33.4"
   },
   "devDependencies": {
+    "@types/inquirer": "^9.0.7",
     "@types/node": "^20.12.13",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
@@ -39,9 +41,9 @@
     "tsx": "^4.11.0",
     "typescript": "^5.4.5"
   },
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "files": [
     "dist",
-    "index.d.ts"
+    "types/index.d.ts"
   ]
 }

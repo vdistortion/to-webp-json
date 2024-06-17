@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import { resolve } from 'node:path';
 import sharp, { Metadata, Sharp } from 'sharp';
 import { getPath } from '@/modules/get-path.js';
-import { ImageType, MaxSizeType } from '../../index.js';
+import { ImageType, MaxSizeType } from '../../types/index.js';
 
 function getName(fullName: string) {
   const [name] = fullName.split('.');
