@@ -119,7 +119,23 @@ if (args.length) {
     if (answers.width > 0) params.width = answers.width;
     if (answers.height > 0) params.height = answers.height;
 
-    start().then(console.info);
+    if (existsSync(answers.dist)) {
+      inquirer
+        .prompt([
+          {
+            type: 'confirm',
+            name: 'confirmOverwrite',
+            message: `The "${answers.dist}" folder already exists. Do you want to overwrite it?`,
+            default: false,
+          },
+        ])
+        .then(({ confirmOverwrite }) => {
+          if (confirmOverwrite) start().then(console.info);
+          else console.warn(`Process termination.`);
+        });
+    } else {
+      start().then(console.info);
+    }
   });
 }
 
