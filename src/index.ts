@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import { existsSync } from 'node:fs';
 import inquirer from 'inquirer';
-import { toJson } from '@/modules/to-json.js';
-import { getPath } from '@/modules/get-path.js';
-import { scanner } from '@/modules/scanner.js';
-import { recreateDist } from '@/modules/recreate-dist.js';
+import { toJson } from './modules/to-json.js';
+import { getPath } from './modules/get-path.js';
+import { scanner } from './modules/scanner.js';
+import { recreateDist } from './modules/recreate-dist.js';
 import { OptionsType } from '../types/index.js';
 
 const prompt = () =>

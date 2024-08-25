@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { resolve } from 'node:path';
 import sharp, { Metadata, Sharp } from 'sharp';
-import { getPath } from '@/modules/get-path.js';
+import { getPath } from './get-path.js';
 import { ImageType, MaxSizeType } from '../../types/index.js';
 
 function getName(fullName: string, format: string) {

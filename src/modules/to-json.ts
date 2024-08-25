@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import isImage from 'is-image';
 import { getStructure, traverseStructure } from 'directory-structure-json';
-import { getPath } from '@/modules/get-path.js';
+import { getPath } from './get-path.js';
 import { StructureJsonType, StructureJsonFileType } from '../../types/index.js';
 
 export const toJson = (jsonName: string, basePath: string) =>

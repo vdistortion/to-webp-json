@@ -14,8 +14,7 @@
     "start": "node ./dist/index.js",
     "build": "rimraf ./dist && tsc && tsc-alias",
     "public:lib": "npm run build && npm publish",
-    "format:all": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|jsx|tsx)\"",
-    "format:check": "prettier --ignore-path .gitignore --check \"**/*.+(js|ts|jsx|tsx)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(ts|tsx)\""
   },
   "keywords": [
     "typescript",

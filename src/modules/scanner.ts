@@ -1,8 +1,8 @@
 import { sep } from 'node:path';
 import { readdir, stat } from 'node:fs/promises';
 import isImage from 'is-image';
-import { getPath } from '@/modules/get-path.js';
-import { imageProcessing } from '@/modules/image-processing.js';
+import { getPath } from './get-path.js';
+import { imageProcessing } from './image-processing.js';
 import { ImageType, MaxSizeType } from '../../types/index.js';
 
 export const scanner = (
