@@ -5,7 +5,10 @@ import { toJson } from './modules/to-json.js';
 import { getPath } from './modules/get-path.js';
 import { scanner } from './modules/scanner.js';
 import { recreateDist } from './modules/recreate-dist.js';
-import { OptionsType } from '../types/index.js';
+import type { OptionsType, FormatType } from '../types/index.js';
+
+const defaultFormat = 'webp';
+const formats: FormatType[] = ['original', defaultFormat, 'jpg', 'png', 'avif', 'tiff', 'gif'];
 
 const prompt = () =>
   inquirer.prompt([
@@ -16,7 +19,7 @@ const prompt = () =>
       default: 'img-src',
       validate: (value: string) => {
         const isExist = existsSync(value);
-        if (!isExist) console.warn(`\n${value} directory not found!`);
+        if (!isExist) console.warn('\x1b[31m', `\n"${value}" directory not found!`, '\x1b[0m');
         return isExist;
       },
     },
@@ -30,25 +33,11 @@ const prompt = () =>
       type: 'list',
       name: 'format',
       message: 'Image format',
-      choices: [
-        {
-          name: 'original',
-          value: 'original',
-        },
-        {
-          name: 'webp',
-          value: 'webp',
-        },
-        {
-          name: 'jpg',
-          value: 'jpg',
-        },
-        {
-          name: 'png',
-          value: 'png',
-        },
-      ],
-      default: 'webp',
+      choices: formats.map((format: FormatType) => ({
+        name: format,
+        value: format,
+      })),
+      default: defaultFormat,
     },
     {
       type: 'number',
@@ -82,7 +71,7 @@ const prompt = () =>
 const options: Readonly<OptionsType> = {
   src: 'img-src',
   dist: 'img-dist',
-  format: 'webp',
+  format: defaultFormat,
   width: null,
   height: null,
   json: null,
@@ -102,7 +91,8 @@ if (args.length) {
       if (['width', 'height'].includes(param)) {
         if (Number(value) >= 100) params[param] = Number(value);
       } else if (param === 'format') {
-        if (['webp', 'jpg', 'png', 'original'].includes(value)) params[param] = value;
+        const format = value as FormatType;
+        if (formats.includes(format)) params[param] = value;
       } else {
         params[param] = value;
       }
@@ -131,7 +121,7 @@ if (args.length) {
         ])
         .then(({ confirmOverwrite }) => {
           if (confirmOverwrite) start().then(console.info);
-          else console.warn(`Process termination.`);
+          else console.warn('\x1b[31m', `Process termination.`, '\x1b[0m');
         });
     } else {
       start().then(console.info);
@@ -146,7 +136,7 @@ async function start() {
   };
 
   if (!existsSync(settings.src)) {
-    console.warn(`${settings.src} directory not found!`);
+    console.warn('\x1b[31m', `"${settings.src}" directory not found!`, '\x1b[0m');
   } else {
     await recreateDist(settings.dist);
     await scanner(

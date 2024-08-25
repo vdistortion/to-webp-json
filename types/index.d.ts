@@ -1,11 +1,13 @@
 export declare type MaxSizeType = number | null;
 
+export declare type FormatType = 'original' | 'webp' | 'jpg' | 'png' | 'avif' | 'tiff' | 'gif';
+
 export declare type OptionsType = {
   src: string;
   dist: string;
   width: MaxSizeType;
   height: MaxSizeType;
-  format: string;
+  format: FormatType;
   json: string | null;
 };
 
