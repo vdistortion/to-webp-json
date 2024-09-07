@@ -16,16 +16,3 @@ export declare type ImageType = {
   path: string;
   dist: string;
 };
-
-export declare type StructureJsonFileType = {
-  type: 'file';
-  name: string;
-};
-
-export declare type StructureJsonDirectoryType = {
-  type: 'folder';
-  name: string;
-  children: StructureJsonType;
-};
-
-export declare type StructureJsonType = (StructureJsonDirectoryType | StructureJsonFileType)[];

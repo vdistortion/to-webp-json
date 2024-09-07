@@ -1,16 +1,15 @@
 import fs from 'node:fs';
 import isImage from 'is-image';
-import { getStructure, traverseStructure } from 'directory-structure-json';
+import { getStructure, traverseStructure, type File, type Folder } from 'directory-structure-json';
 import { getPath } from './get-path.js';
-import { StructureJsonType, StructureJsonFileType } from '../../types/index.js';
 
 export const toJson = (jsonName: string, basePath: string) =>
   new Promise((resolve, reject) => {
-    getStructure(fs, basePath, (error: Error, structure: StructureJsonType) => {
+    getStructure(fs, basePath, (error: Error, structure: Folder) => {
       if (error) reject(error);
 
       const list: string[] = [];
-      const imageFilter = (_key: string, value: StructureJsonType) => {
+      const imageFilter = (_key: string, value: Folder) => {
         if (Array.isArray(value)) {
           return value.filter((item) => {
             const isFolder = item.type === 'folder';
@@ -27,7 +26,7 @@ export const toJson = (jsonName: string, basePath: string) =>
           structure,
           '.',
           () => {},
-          (file: StructureJsonFileType, path: string) => {
+          (file: File, path: string) => {
             const fullPath = getPath(path, file.name);
             list.push(fullPath);
           },
