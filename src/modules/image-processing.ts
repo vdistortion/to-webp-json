@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import { resolve } from 'node:path';
 import sharp, { Metadata, Sharp } from 'sharp';
 import { getPath } from './get-path.js';
-import type { ImageType, MaxSizeType } from '../../types/index.js';
+import type { ImageType, MaxSizeType } from '../../types/index.ts';
 
 function getName(fullName: string, format: string) {
   if (format === 'original') return fullName;

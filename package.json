@@ -23,7 +23,7 @@
     "json",
     "static"
   ],
-  "author": "",
+  "author": "Валентин <valentin.distortion@gmail.com>",
   "license": "GPL",
   "dependencies": {
     "directory-structure-json": "^1.0.0",
@@ -43,6 +43,6 @@
   "types": "./types/index.d.ts",
   "files": [
     "dist",
-    "types/index.d.ts"
+    "types"
   ]
 }

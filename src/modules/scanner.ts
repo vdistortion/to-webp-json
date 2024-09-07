@@ -3,7 +3,7 @@ import { readdir, stat } from 'node:fs/promises';
 import isImage from 'is-image';
 import { getPath } from './get-path.js';
 import { imageProcessing } from './image-processing.js';
-import type { ImageType, MaxSizeType } from '../../types/index.js';
+import type { ImageType, MaxSizeType } from '../../types/index.ts';
 
 export const scanner = (
   initPath: string,

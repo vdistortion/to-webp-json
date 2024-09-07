@@ -5,7 +5,7 @@ import { toJson } from './modules/to-json.js';
 import { getPath } from './modules/get-path.js';
 import { scanner } from './modules/scanner.js';
 import { recreateDist } from './modules/recreate-dist.js';
-import type { OptionsType, FormatType } from '../types/index.js';
+import type { OptionsType, FormatType } from '../types/index.ts';
 
 const defaultFormat = 'webp';
 const formats: FormatType[] = ['original', defaultFormat, 'jpg', 'png', 'avif', 'tiff', 'gif'];
