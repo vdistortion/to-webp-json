@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { existsSync } from 'node:fs';
-import inquirer from 'inquirer';
+import { confirm, input, number, rawlist } from '@inquirer/prompts';
 import { toJson } from './modules/to-json.js';
 import { getPath } from './modules/get-path.js';
 import { scanner } from './modules/scanner.js';
@@ -10,63 +10,62 @@ import type { OptionsType, FormatType } from '../types/index.ts';
 const defaultFormat = 'webp';
 const formats: FormatType[] = ['original', defaultFormat, 'jpg', 'png', 'avif', 'tiff', 'gif'];
 
-const prompt = () =>
-  inquirer.prompt([
-    {
-      type: 'input',
-      name: 'src',
-      message: 'Source catalog with photos',
-      default: 'img-src',
-      validate: (value: string) => {
-        const isExist = existsSync(value);
-        if (!isExist) console.warn('\x1b[31m', `\n"${value}" directory not found!`, '\x1b[0m');
-        return isExist;
-      },
+const prompt = async () => {
+  const src = await input({
+    message: 'Source catalog with photos',
+    default: 'img-src',
+    validate: (value: string) => {
+      const isExist = existsSync(value);
+      if (!isExist) console.warn('\x1b[31m', `\n"${value}" directory not found!`, '\x1b[0m');
+      return isExist;
     },
-    {
-      type: 'input',
-      name: 'dist',
-      message: 'Final catalog',
-      default: 'img-dist',
-    },
-    {
-      type: 'list',
-      name: 'format',
-      message: 'Image format',
-      choices: formats.map((format: FormatType) => ({
-        name: format,
-        value: format,
-      })),
-      default: defaultFormat,
-    },
-    {
-      type: 'number',
-      name: 'width',
-      message: 'Maximum width',
-      default: null,
-    },
-    {
-      type: 'number',
-      name: 'height',
-      message: 'Maximum height',
-      default: null,
-    },
-    {
-      type: 'confirm',
-      name: 'isJson',
-      message: 'Should I generate a JSON file?',
-      default: false,
-    },
-    {
-      type: 'input',
-      name: 'json',
-      message: 'JSON file name',
-      default: 'structure',
-      when(args) {
-        return args.isJson;
-      },
-    },
-  ]);
+  });
+
+  const dist = await input({
+    message: 'Final catalog',
+    default: 'img-dist',
+  });
+
+  const format = await rawlist({
+    message: 'Image format',
+    choices: formats.map((format: FormatType) => ({
+      name: format,
+      value: format,
+    })),
+  });
+
+  const width = await number({
+    message: 'Maximum width',
+    default: 0,
+  });
+
+  const height = await number({
+    message: 'Maximum height',
+    default: 0,
+  });
+
+  const isJson = await confirm({
+    message: 'Should I generate a JSON file?',
+    default: false,
+  });
+
+  const json = isJson
+    ? await input({
+        message: 'JSON file name',
+        default: 'structure',
+      })
+    : null;
+
+  return {
+    src,
+    dist,
+    format,
+    width,
+    height,
+    isJson,
+    json,
+  };
+};
 
 const options: Readonly<OptionsType> = {
   src: 'img-src',
@@ -106,23 +105,17 @@ if (args.length) {
     params.dist = answers.dist;
     params.format = answers.format;
     if (answers.isJson) params.json = answers.json;
-    if (answers.width > 0) params.width = answers.width;
-    if (answers.height > 0) params.height = answers.height;
+    if (answers.width && answers.width > 0) params.width = answers.width;
+    if (answers.height && answers.height > 0) params.height = answers.height;
 
     if (existsSync(answers.dist)) {
-      inquirer
-        .prompt([
-          {
-            type: 'confirm',
-            name: 'confirmOverwrite',
-            message: `The "${answers.dist}" folder already exists. Do you want to overwrite it?`,
-            default: false,
-          },
-        ])
-        .then(({ confirmOverwrite }) => {
-          if (confirmOverwrite) start().then(console.info);
-          else console.warn('\x1b[31m', `Process termination.`, '\x1b[0m');
-        });
+      confirm({
+        message: `The "${answers.dist}" folder already exists. Do you want to overwrite it?`,
+        default: false,
+      }).then((confirmOverwrite) => {
+        if (confirmOverwrite) start().then(console.info);
+        else console.warn('\x1b[31m', `Process termination.`, '\x1b[0m');
+      });
     } else {
       start().then(console.info);
     }

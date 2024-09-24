@@ -26,13 +26,12 @@
   "author": "Валентин <valentin.distortion@gmail.com>",
   "license": "GPL",
   "dependencies": {
+    "@inquirer/prompts": "^6.0.1",
     "directory-structure-json": "^1.0.0",
-    "inquirer": "^9.2.23",
     "is-image": "^4.0.0",
     "sharp": "^0.33.4"
   },
   "devDependencies": {
-    "@types/inquirer": "^9.0.7",
     "@types/node": "^20.12.13",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
