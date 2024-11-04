@@ -3,3 +3,4 @@ node_modules
 dist
 img-dist
 img-src
+docs/.vitepress/cache/
