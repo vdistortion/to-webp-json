@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "to-webp-json"
-  text: "Convert images"
+  name: 'to-webp-json'
+  text: 'Convert images'
   tagline: For static sites
   image: logo.jpg
   actions:
