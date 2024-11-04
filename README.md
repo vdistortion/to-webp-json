@@ -4,6 +4,8 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/astrotrain55/to-webp-json?style=flat&logo=github)](https://github.com/astrotrain55/to-webp-json)
 [![GitHub Created At](https://img.shields.io/github/created-at/astrotrain55/to-webp-json?style=flat&logo=github)](https://github.com/astrotrain55/to-webp-json)
 
+[![to-webp-json](logo.jpg)](https://github.com/astrotrain55/to-webp-json)
+
 ### Usage
 
 Create `img-src` folder
