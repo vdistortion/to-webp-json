@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: 'to-webp-json'
-  text: 'Convert images'
-  tagline: For static sites
+  text: 'Image conversion'
+  tagline: For static websites
   image: logo.jpg
   actions:
     - theme: brand
@@ -13,12 +13,12 @@ hero:
       link: /docs
 
 features:
-  - title: Convert images to webp and any formats
+  - title: Image format conversion
     details: webp, jpg, png, avif, tiff, gif
-  - title: Forming a structure in JSON
-    details: For use on static sites without a backend
+  - title: Generate JSON structure
+    details: For static sites without a backend
   - title: Interactive mode
-    details: When running without parameters
+    details: When run without arguments
 ---
 
 ## Use

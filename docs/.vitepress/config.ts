@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'to-webp-json',
-  description: 'Convert images to webp structure',
+  description: 'Image conversion for static websites',
   base: '/to-webp-json/',
   head: [['link', { rel: 'icon', href: '/to-webp-json/favicon.ico' }]],
   themeConfig: {
