@@ -32,21 +32,21 @@
   "author": "Валентин <valentin.distortion@gmail.com>",
   "license": "GPL",
   "dependencies": {
-    "@inquirer/prompts": "^6.0.1",
+    "@inquirer/prompts": "^7.5.3",
     "directory-structure-json": "^1.0.0",
     "is-image": "^4.0.0",
-    "sharp": "^0.33.5"
+    "sharp": "^0.34.2"
   },
   "devDependencies": {
     "@types/directory-structure-json": "^1.0.2",
-    "@types/node": "^22.6.1",
-    "gh-pages": "^6.2.0",
-    "prettier": "3.3.3",
+    "@types/node": "^22.15.23",
+    "gh-pages": "^6.3.0",
+    "prettier": "3.5.3",
     "rimraf": "^6.0.1",
-    "tsc-alias": "^1.8.10",
-    "tsx": "^4.19.1",
-    "typescript": "^5.6.2",
-    "vitepress": "^1.5.0"
+    "tsc-alias": "^1.8.16",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitepress": "^1.6.3"
   },
   "types": "./types/index.d.ts",
   "files": [
