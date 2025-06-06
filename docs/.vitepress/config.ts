@@ -6,6 +6,30 @@ export default defineConfig({
   description: 'Image conversion for static websites',
   base: '/to-webp-json/',
   head: [['link', { rel: 'icon', href: '/to-webp-json/favicon.ico' }]],
+  locales: {
+    root: {
+      label: '🇬🇧 English',
+      lang: 'en',
+    },
+    ru: {
+      label: '🇷🇺 Русский',
+      lang: 'ru',
+      link: '/ru/',
+      themeConfig: {
+        nav: [
+          { text: 'Главная', link: '/ru/' },
+          { text: 'Документация', link: '/ru/docs' },
+        ],
+
+        sidebar: [
+          {
+            text: 'Документация',
+            items: [{ text: 'to-webp-json', link: '/ru/docs' }],
+          },
+        ],
+      },
+    },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
