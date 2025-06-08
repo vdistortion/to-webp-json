@@ -8,7 +8,7 @@
   "homepage": "https://vdistortion.github.io/to-webp-json/",
   "repository": {
     "type": "git",
-    "url": "git@github.com:astrotrain55/to-webp-json.git"
+    "url": "git@github.com:vdistortion/to-webp-json.git"
   },
   "scripts": {
     "dev": "tsx src/index.ts",

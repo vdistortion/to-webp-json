@@ -1,7 +1,7 @@
 # to-webp-json
 
 [![NPM Version](https://img.shields.io/npm/v/to-webp-json?style=flat&logo=npm&label=version&color=cb3837)](https://www.npmjs.com/package/to-webp-json)
-[![GitHub Created At](https://img.shields.io/github/created-at/astrotrain55/to-webp-json?style=flat&logo=github)](https://github.com/astrotrain55/to-webp-json)
+[![GitHub Created At](https://img.shields.io/github/created-at/vdistortion/to-webp-json?style=flat&logo=github)](https://github.com/vdistortion/to-webp-json)
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/vdistortion/to-webp-json)
 
 [![to-webp-json](docs/bg.jpg)](https://vdistortion.github.io/to-webp-json/)
