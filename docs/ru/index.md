@@ -14,7 +14,7 @@ hero:
 
 features:
   - title: Преобразование форматов изображений
-    details: webp, jpg, png, avif, tiff, gif
+    details: webp, jpg, png, avif
   - title: Генерация структуры JSON
     details: Для статических сайтов без бэкенда
   - title: Интерактивный режим

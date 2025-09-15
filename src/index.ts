@@ -8,7 +8,7 @@ import { recreateDist } from './modules/recreate-dist.js';
 import type { OptionsType, FormatType } from '../types/index.ts';
 
 const defaultFormat = 'webp';
-const formats: FormatType[] = ['original', defaultFormat, 'jpg', 'png', 'avif', 'tiff', 'gif'];
+const formats: FormatType[] = ['original', defaultFormat, 'jpg', 'png', 'avif'];
 
 const prompt = async () => {
   const src = await input({

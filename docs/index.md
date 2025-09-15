@@ -14,7 +14,7 @@ hero:
 
 features:
   - title: Image format conversion
-    details: webp, jpg, png, avif, tiff, gif
+    details: webp, jpg, png, avif
   - title: Generate JSON structure
     details: For static sites without a backend
   - title: Interactive mode

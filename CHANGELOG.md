@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is inspired by [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.4.0] - 2025-09-15
+
+### Removed
+
+- Support for `tiff` and `gif` formats (yeah, they barely lived since 2024-08-25).
+
 ## [0.3.4] - 2025-05-28
 
 ### Fixed
