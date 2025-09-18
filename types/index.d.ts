@@ -9,6 +9,7 @@ export declare type OptionsType = {
   height: MaxSizeType;
   format: FormatType;
   json: string | null;
+  concurrency: number;
 };
 
 export declare type ImageType = {

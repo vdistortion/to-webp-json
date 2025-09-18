@@ -28,7 +28,6 @@ export const imageProcessing = (
     return input.metadata().then((metadata: Metadata) => {
       const width = Number(metadata.width) > Number(maxWidth) ? maxWidth : null;
       const height = Number(metadata.height) > Number(maxHeight) ? maxHeight : null;
-      console.info(`\x1b[34m`, `${image.path}`, '\x1b[33m', 'processing...', '\x1b[0m');
       return input.resize(width, height, { fit: 'inside' }).toFile(fullPath);
     });
   });

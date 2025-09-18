@@ -2,7 +2,7 @@
 
 ![to-webp-json](bg.jpg)
 
-A CLI tool that converts images to the desired format (`webp`, `jpg`, `png`, etc.), generates a structured JSON map of the output files, and optionally resizes them by width and/or height. Useful for static sites, galleries, and automation.
+A CLI tool that converts images to the desired format, generates a structured JSON map of the output files, and optionally resizes them by width and/or height. Useful for static sites, galleries, and automation.
 
 ## Usage
 
@@ -20,14 +20,15 @@ npx to-webp-json@latest
 
 ## Command-line options
 
-| Option | Type           | Description                                     | Default  |
-| ------ | -------------- | ----------------------------------------------- | -------- |
-| src    | string         | Source folder name                              | img-src  |
-| dist   | string         | Result folder name                              | img-dist |
-| format | string         | Output format: webp, jpg, png, avif or original | webp     |
-| json   | string \| null | Output JSON filename (or null to skip)          | null     |
-| width  | number \| null | Maximum image width in pixels                   | null     |
-| height | number \| null | Maximum image height in pixels                  | null     |
+| Option      | Type           | Description                                         | Default  |
+| ----------- | -------------- | --------------------------------------------------- | -------- |
+| src         | string         | Source folder name                                  | img-src  |
+| dist        | string         | Result folder name                                  | img-dist |
+| format      | string         | Output format: webp, jpg, png, avif or original     | webp     |
+| json        | string \| null | Output JSON filename (or null to skip)              | null     |
+| width       | number \| null | Maximum image width in pixels                       | null     |
+| height      | number \| null | Maximum image height in pixels                      | null     |
+| concurrency | number         | Maximum number of concurrent image processing tasks | 5        |
 
 ## Examples
 

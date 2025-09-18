@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is inspired by [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.5.0] - 2025-09-18
+
+### Added
+
+- Progress bar for image processing.
+- `concurrency` option to control how many images are processed in parallel.
+
 ## [0.4.0] - 2025-09-15
 
 ### Removed

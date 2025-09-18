@@ -44,6 +44,11 @@ const prompt = async () => {
     default: 0,
   });
 
+  const concurrency = await number({
+    message: 'Max concurrent tasks',
+    default: 5,
+  });
+
   const isJson = await confirm({
     message: 'Should I generate a JSON file?',
     default: false,
@@ -62,6 +67,7 @@ const prompt = async () => {
     format,
     width,
     height,
+    concurrency,
     isJson,
     json,
   };
@@ -74,6 +80,7 @@ const options: Readonly<OptionsType> = {
   width: null,
   height: null,
   json: null,
+  concurrency: 5,
 };
 
 const args: string[] = process.argv.slice(2);
@@ -89,6 +96,8 @@ if (args.length) {
     if (isValidValue && isValidParam) {
       if (['width', 'height'].includes(param)) {
         if (Number(value) >= 100) params[param] = Number(value);
+      } else if (param === 'concurrency') {
+        if (Number(value) >= 0) params[param] = Number(value);
       } else if (param === 'format') {
         const format = value as FormatType;
         if (formats.includes(format)) params[param] = value;
@@ -105,6 +114,7 @@ if (args.length) {
     params.dist = answers.dist;
     params.format = answers.format;
     if (answers.isJson) params.json = answers.json;
+    if (answers.concurrency && answers.concurrency > 0) params.concurrency = answers.concurrency;
     if (answers.width && answers.width > 0) params.width = answers.width;
     if (answers.height && answers.height > 0) params.height = answers.height;
 
@@ -139,6 +149,7 @@ async function start() {
       settings.width,
       settings.height,
       settings.format,
+      settings.concurrency,
     );
 
     if (settings.json) {
