@@ -5,20 +5,26 @@ layout: home
 hero:
   name: 'to-webp-json'
   text: 'Преобразование изображений'
-  tagline: Для статических сайтов
+  tagline: для статических сайтов
   image: ../logo.jpg
   actions:
     - theme: brand
       text: Документация
       link: /ru/docs
+    - theme: alt
+      text: GitHub
+      link: https://github.com/vdistortion/to-webp-json
+    - theme: alt
+      text: NPM
+      link: https://github.com/vdistortion/to-webp-json
 
 features:
   - title: Преобразование форматов изображений
     details: webp, jpg, png, avif
   - title: Генерация структуры JSON
-    details: Для статических сайтов без бэкенда
+    details: для статических сайтов без бэкенда
   - title: Интерактивный режим
-    details: При запуске без аргументов
+    details: при запуске без аргументов
 ---
 
 ## Запуск

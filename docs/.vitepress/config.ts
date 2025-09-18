@@ -11,6 +11,42 @@ export default defineConfig({
       label: '🇬🇧 English',
       lang: 'en',
     },
+    de: {
+      label: '🇩🇪 Deutsch',
+      lang: 'de',
+      link: '/de/',
+      themeConfig: {
+        nav: [
+          { text: 'Startseite', link: '/de/' },
+          { text: 'Dokumentation', link: '/de/docs' },
+        ],
+
+        sidebar: [
+          {
+            text: 'Dokumentation',
+            items: [{ text: 'to-webp-json', link: '/de/docs' }],
+          },
+        ],
+      },
+    },
+    ua: {
+      label: '🇺🇦 Українська',
+      lang: 'ua',
+      link: '/ua/',
+      themeConfig: {
+        nav: [
+          { text: 'Головна', link: '/ua/' },
+          { text: 'Документація', link: '/ua/docs' },
+        ],
+
+        sidebar: [
+          {
+            text: 'Документація',
+            items: [{ text: 'to-webp-json', link: '/ua/docs' }],
+          },
+        ],
+      },
+    },
     ru: {
       label: '🇷🇺 Русский',
       lang: 'ru',

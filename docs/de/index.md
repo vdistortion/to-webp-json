@@ -4,12 +4,12 @@ layout: home
 
 hero:
   name: 'to-webp-json'
-  text: 'Image conversion'
-  tagline: for static websites
-  image: logo.jpg
+  text: 'Bildkonvertierung'
+  tagline: für statische Webseiten
+  image: ../logo.jpg
   actions:
     - theme: brand
-      text: Docs
+      text: Dokumentation
       link: /docs
     - theme: alt
       text: GitHub
@@ -19,15 +19,15 @@ hero:
       link: https://github.com/vdistortion/to-webp-json
 
 features:
-  - title: Image format conversion
+  - title: Bildformatkonvertierung
     details: webp, jpg, png, avif
-  - title: Generate JSON structure
-    details: for static sites without a backend
-  - title: Interactive mode
-    details: when run without arguments
+  - title: JSON-Struktur generieren
+    details: für statische Seiten ohne Backend
+  - title: Interaktiver Modus
+    details: bei Start ohne Argumente
 ---
 
-## Use
+## Verwendung
 
 ```sh
 npx to-webp-json@latest
