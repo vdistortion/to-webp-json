@@ -8,7 +8,7 @@
 
 A CLI tool that converts images to the desired format, generates a structured JSON map of the output files, and optionally resizes them by width and/or height. Useful for static sites, galleries, and automation.
 
-## Usage
+## 📖 Usage
 
 Create an `img-src` folder
 
@@ -22,7 +22,7 @@ Place images inside `img-src`
 npx to-webp-json@latest
 ```
 
-## Command-line options
+## 💻 Command-line options
 
 | Option      | Type           | Description                                                                | Default  |
 | ----------- | -------------- | -------------------------------------------------------------------------- | -------- |
@@ -34,7 +34,7 @@ npx to-webp-json@latest
 | height      | number \| null | Maximum image height in pixels                                             | null     |
 | concurrency | number         | Maximum number of concurrent image processing tasks                        | 5        |
 
-## Examples
+## ✨ Examples
 
 ```shell
 npx to-webp-json json=static-images format=original
@@ -49,3 +49,8 @@ Run with no arguments (interactive mode)
 ```shell
 npx to-webp-json
 ```
+
+## 🌍 Translations
+
+The documentation is available in several languages, but it can always be improved.
+If you notice mistakes or want to add a new language, contributions are very welcome!

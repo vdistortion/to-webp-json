@@ -2,9 +2,9 @@
 
 ![to-webp-json](../bg.jpg)
 
-Ein CLI-Tool, das Bilder in das gewünschte Format konvertiert, eine strukturierte JSON-Karte der Ausgabedateien erzeugt und optional die Größe nach Breite und/oder Höhe anpasst. Nützlich für statische Webseiten, Galerien und Automatisierung.
+Ein CLI-Tool, das Bilder in das gewünschte Format konvertiert, eine Dateistruktur im JSON-Format generiert und bei Bedarf die Größe ändert. Nützlich für statische Websites, Galerien und Automatisierung.
 
-## Anwendungsbeispiel
+## 📖 Anwendungsbeispiel
 
 Erstellen Sie einen Ordner `img-src`
 
@@ -18,7 +18,7 @@ Legen Sie Bilder in den Ordner `img-src`
 npx to-webp-json@latest
 ```
 
-## Befehlszeilenoptionen
+## 💻 Befehlszeilenoptionen
 
 | Option      | Typ            | Beschreibung                                                           | Standard |
 | ----------- | -------------- | ---------------------------------------------------------------------- | -------- |
@@ -30,7 +30,7 @@ npx to-webp-json@latest
 | height      | number \| null | Maximale Bildhöhe in Pixeln                                            | null     |
 | concurrency | number         | Maximale Anzahl gleichzeitiger Bildverarbeitungsaufgaben               | 5        |
 
-## Beispiele
+## ✨ Beispiele
 
 ```shell
 npx to-webp-json json=static-images format=original

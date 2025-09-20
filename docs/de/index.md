@@ -27,8 +27,13 @@ features:
     details: bei Start ohne Argumente
 ---
 
-## Verwendung
+## 🚀 Verwendung
 
 ```sh
 npx to-webp-json@latest
 ```
+
+## 🌍 Übersetzungen
+
+Die Dokumentation ist in mehreren Sprachen verfügbar, kann aber immer verbessert werden.
+Wenn Sie Fehler bemerken oder eine neue Sprache hinzufügen möchten, sind Beiträge sehr willkommen!

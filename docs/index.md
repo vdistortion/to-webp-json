@@ -27,8 +27,13 @@ features:
     details: when run without arguments
 ---
 
-## Use
+## 🚀 Use
 
 ```sh
 npx to-webp-json@latest
 ```
+
+## 🌍 Translations
+
+The documentation is available in several languages, but it can always be improved.
+If you notice mistakes or want to add a new language, contributions are very welcome!
