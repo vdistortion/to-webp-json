@@ -1,12 +1,12 @@
 import fs from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { parse, resolve } from 'node:path';
 import sharp, { Metadata, Sharp } from 'sharp';
 import { getPath } from './get-path.js';
-import type { ImageType, MaxSizeType } from '../../types/index.ts';
+import type { FormatType, ImageType, MaxSizeType } from '../../types/index.ts';
 
 function getName(fullName: string, format: string) {
   if (format === 'original') return fullName;
-  const [name] = fullName.split('.');
+  const { name } = parse(fullName);
   return `${name}.${format}`;
 }
 
@@ -14,7 +14,7 @@ export const imageProcessing = (
   image: ImageType,
   maxWidth: MaxSizeType,
   maxHeight: MaxSizeType,
-  format: string,
+  format: FormatType,
 ) => {
   const fullPath = getPath(resolve(image.dist), getName(image.name, format));
 
@@ -26,8 +26,14 @@ export const imageProcessing = (
     });
 
     return input.metadata().then((metadata: Metadata) => {
-      const width = Number(metadata.width) > Number(maxWidth) ? maxWidth : null;
-      const height = Number(metadata.height) > Number(maxHeight) ? maxHeight : null;
+      const currentWidth = metadata.width ?? null;
+      const currentHeight = metadata.height ?? null;
+      const width =
+        typeof maxWidth === 'number' && currentWidth && currentWidth > maxWidth ? maxWidth : null;
+      const height =
+        typeof maxHeight === 'number' && currentHeight && currentHeight > maxHeight
+          ? maxHeight
+          : null;
       return input.resize(width, height, { fit: 'inside' }).toFile(fullPath);
     });
   });

@@ -5,7 +5,7 @@ import pLimit from 'p-limit';
 import { SingleBar, Presets } from 'cli-progress';
 import { getPath } from './get-path.js';
 import { imageProcessing } from './image-processing.js';
-import type { ImageType, MaxSizeType } from '../../types/index.ts';
+import type { FormatType, ImageType, MaxSizeType } from '../../types/index.ts';
 
 export const scanner = (
   initPath: string,
@@ -13,7 +13,7 @@ export const scanner = (
   dirDist: string,
   maxWidth: MaxSizeType,
   maxHeight: MaxSizeType,
-  format: string,
+  format: FormatType,
   concurrency: number,
 ) => {
   return readdir(initPath).then((files) => {

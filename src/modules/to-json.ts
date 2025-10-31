@@ -9,7 +9,10 @@ export const toJson = (jsonName: string, basePath: string) =>
       fs,
       basePath,
       (error: Error | null, structure: Folder | Array<File | Folder> | undefined) => {
-        if (error) reject(error);
+        if (error) {
+          reject(error);
+          return;
+        }
 
         const list: string[] = [];
         const imageFilter = (_: string, value: Folder | Array<File | Folder>) => {
@@ -38,7 +41,7 @@ export const toJson = (jsonName: string, basePath: string) =>
 
         fs.writeFile(jsonName, json, (err) => {
           if (err) reject(err);
-          resolve(list);
+          else resolve(list);
         });
       },
     );
