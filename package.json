@@ -1,6 +1,6 @@
 {
   "name": "to-webp-json",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Image conversion for static websites",
   "main": "./dist/index.js",
   "type": "module",
