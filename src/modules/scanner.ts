@@ -1,4 +1,4 @@
-import { sep } from 'node:path';
+import { resolve, sep } from 'node:path';
 import { readdir, stat } from 'node:fs/promises';
 import isImage from 'is-image';
 import pLimit from 'p-limit';
@@ -16,6 +16,8 @@ export const scanner = (
   format: FormatType,
   concurrency: number,
 ) => {
+  const absDist = resolve(dirDist);
+
   return readdir(initPath).then((files) => {
     const bar = new SingleBar({}, Presets.rect);
     const limit = pLimit(concurrency);
@@ -27,9 +29,12 @@ export const scanner = (
         const newPath = getPath(initPath, file);
 
         return stat(newPath).then((stats) => {
-          if (stats.isDirectory())
+          if (stats.isDirectory()) {
+            const absNewPath = resolve(newPath);
+            if (absNewPath === absDist || absNewPath.startsWith(absDist + sep))
+              return Promise.resolve();
             return scanner(newPath, dirSrc, dirDist, maxWidth, maxHeight, format, concurrency);
-          else if (isImage(file)) {
+          } else if (isImage(file)) {
             const distPath = newPath.replace(dirSrc, dirDist).split(sep).slice(0, -1);
             const image: ImageType = {
               name: file,

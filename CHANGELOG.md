@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is inspired by [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.1] - 2025-12-19
+
+### Fixed
+
+- Prevented recursive processing of the output directory when it is located inside the source directory.
+
 ## [1.0.0] - 2025-10-31
 
 ### Fixed
